@@ -8,7 +8,7 @@ public class Server {
         new Server().runServer();
     }
     
-    public void runServer() throws IOException{
+    public void runServer() throws IOException{                             // Inicia o servidor e aguarda conexões
     	TabelaPokemon tabela = new TabelaPokemon();
 	   	tabela.initializeMatriz();
 	   	tabela.putPokeIntoMatriz();

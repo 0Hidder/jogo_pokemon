@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ServerThread extends Thread {
+public class ServerThread extends Thread {                  // Thread de conexão com o servidor
 	
 	String[][] matriz = new String[100][100];
     Socket socket;
     PrintWriter pw;
    	TabelaPokemon tabela;
    	int total;
-    ServerThread(Socket socket, TabelaPokemon tabelaS) throws IOException{
+    ServerThread(Socket socket, TabelaPokemon tabelaS) throws IOException{  // Inicializa as  variáveis
         this.socket = socket;
         this.pw = new PrintWriter(socket.getOutputStream(), true);
         this.tabela = tabelaS;
@@ -30,7 +30,7 @@ public class ServerThread extends Thread {
             
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while ((message = br.readLine()) != null){
-                System.out.println("Message from Client: " +message);
+                System.out.println("Message from Client: " +message);       // Exibe em tela a mensagem recebida do "client-side"
                 
                 if(message.contains("LISTATODOSPOKEMONS")){
                 	matriz = tabela.getMatriz();

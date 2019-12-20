@@ -41,15 +41,15 @@ public class Main {
     	
     	do {
     		Main.clearScreen();
-    		Main.Menu();
+    		Main.Menu();                              // Menu do jogo
     		System.out.print("Chose one option: ");
-    		op = br.readLine();
+    		op = br.readLine();                       // Recebe a opção escolhida pelo jogador
     		
-    		switch (op){
+    		switch (op){                              // Realiza uma ação baseado na escolha do jogador
     		case "1":
     			System.out.println("You chose the first option...");
-    			System.out.println("The following are all the pokemon on the server at a random order...");
-    			pw.println("LISTATODOSPOKEMONS");
+    			System.out.println("The following are all the pokemon on the server at a random order..."); 
+    			pw.println("LISTATODOSPOKEMONS");    // Estes comandos para o servidor foram específicados pelo professor
     			while (entrada.hasNextLine()) {
 					System.out.println(entrada.nextLine());
 					cont += 1;
@@ -80,28 +80,28 @@ public class Main {
     		break;
     		
     		case "3":
-    			System.out.println("You chose the third option...");
-    			System.out.println("Please type the X coordinates: ");
+    			System.out.println("You chose the third option...");         // Aqui o jogador vai tentar capturar um pokemon que se encontra dentro da matriz
+    			System.out.println("Please type the X coordinates: ");       // Deve forcener as coordenadas de X e Y
     			int coordX = teclado.nextInt();
     			System.out.println("Please type the Y coordinates: ");
     			int coordY = teclado.nextInt();
-    			String message = "PROCURARPOKEMON"+" "+coordX+" "+coordY;
+    			String message = "PROCURARPOKEMON"+" "+coordX+" "+coordY;    // Manda o comando para o servidor junto com as coordenadas
     			System.out.println(message);
     			pw.println(message);
     			System.out.println("Searching for pokemon at that coordinates...");
     			System.out.println(brFromClient.readLine());
     			String answerFromServer = brFromClient.readLine();
-    			if (answerFromServer.startsWith("ACHOU")){
-    				String partsAnswer[] = answerFromServer.split(" ");
-    				pokemonsPlayer.add(partsAnswer[1]);
-    			}
+    			if (answerFromServer.startsWith("ACHOU")){                   // Se o servidor responder com "ACHOU", significa que o jogador
+    				String partsAnswer[] = answerFromServer.split(" ");      // acertou as coordenadas de um pokemon
+     				pokemonsPlayer.add(partsAnswer[1]);                      // Então a mensagem é separado no " " e a segunda parte  
+    			}                                                            // é o nome do pokemon capturado
     			String total = brFromClient.readLine();
     			totalNum = Integer.parseInt(total);
     			player.setPokemonsPlayerCaught(pokemonsPlayer);
     			break;
     		
     		case "4":
-    			ArrayList<String> pokemonsPlayerFromClass = new ArrayList<String>();
+    			ArrayList<String> pokemonsPlayerFromClass = new ArrayList<String>(); // Mostra os pokemons que o jogador possui
     			pokemonsPlayerFromClass = player.getPokemonPlayerHas();
     			System.out.println("You chose the fourth option...");
     			System.out.println("The following are all the pokemon you own...");
@@ -112,7 +112,7 @@ public class Main {
     			break;
     			
     		case "5":
-    			pw.println(namePlayer + " Has disconected");
+    			pw.println(namePlayer + " Has disconected");         // O jogador desconectou do jogo
     			running = false;
     			break;
     	}

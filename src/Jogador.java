@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class Jogador {
 	
-	private String nomePlayer = "";
-	private int quantPokemon = 0;
-	private ArrayList<String> PokemonsPlayer = new ArrayList<String>();
+	private String nomePlayer = "";										  // Nome do jogador
+	private int quantPokemon = 0;   									 // Quantidade de Pokemons que o jogador possui
+	private ArrayList<String> PokemonsPlayer = new ArrayList<String>(); // Array com os nomes dos pokemons que o jogador possui
 	
 	public void setNewPokemon(String nomepoke) {
 		this.PokemonsPlayer.add(nomepoke);

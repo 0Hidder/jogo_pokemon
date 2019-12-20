@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class TabelaPokemon {
+public class TabelaPokemon { 													// Tabela contendo os pokemons em jogo
 	
 	public String[][] matriz = new String[100][100];
 	public String[][] matrizCopy = new String[100][100];
@@ -51,15 +51,15 @@ public class TabelaPokemon {
 		boolean havePut = false;
 		
 
-		for (int i = 0; i<150; i++){
-			havePut = false;
+		for (int i = 0; i<150; i++){									// Realiza o loop 150 vezes (número de pokemons disponíveis)
+			havePut = false;										
 			while(havePut != true){
-				int randomX = randX.nextInt((max - min) + 1) + min;
+				int randomX = randX.nextInt((max - min) + 1) + min;		// Gera valores aleatórios para X e Y
 				int randomY = randY.nextInt((max - min) + 1) + min;
-				if(matriz[randomX][randomY] == "0"){
+				if(matriz[randomX][randomY] == "0"){					// Se aquele local estiver com um "0", pode colocar um pokemon ali
 					this.matriz[randomX][randomY] = listArr[i];
 					this.matrizCopy[randomX][randomY] = listArr[i];
-					havePut = true;
+					havePut = true;										// Atualiza que colocou um pokemon e segue para o próximo no loop
 		//			System.out.println(matriz[randomX][randomY]);
 				}
 			}	
@@ -96,17 +96,17 @@ public class TabelaPokemon {
 		int coordiX = coordX;
 		int coordiY = coordY;
 		
-		if (this.matriz[coordiX][coordiY] == "0"){
+		if (this.matriz[coordiX][coordiY] == "0"){					// Caso aquele local possua um "0" o jogador não achou um pokemon
 			answer = "NAOACHOU";
 		}else{
-			answer = "ACHOU " + this.matriz[coordiX][coordiY];
-			this.pokeFound.add(this.matriz[coordiX][coordiY]);
+			answer = "ACHOU " + this.matriz[coordiX][coordiY];		// Caso contrário ele achou
+			this.pokeFound.add(this.matriz[coordiX][coordiY]);		// O valor é substituído por "0", pois ali não existe mais um pokemon
 			this.matriz[coordiX][coordiY] = "0";
-			this.total = this.total - 1;
+			this.total = this.total - 1;							// O total de pokemons em jogo agora é menor
 		}
 		
 		
-		return answer;
+		return answer;												// Devolve a resposta
 	}
 	
 	public int getTotal(){
